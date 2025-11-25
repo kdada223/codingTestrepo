@@ -85,3 +85,108 @@ function solution(angle) {
 }
 
 //머쓱이네 양꼬치 가게는 10인분을 먹으면 음료수 하나를 서비스로 줍니다. 양꼬치는 1인분에 12,000원, 음료수는 2,000원입니다. 정수 n과 k가 매개변수로 주어졌을 때, 양꼬치 n인분과 음료수 k개를 먹었다면 총얼마를 지불해야 하는지 return 하도록 solution 함수를 완성해보세요.
+function solution(n, k) {
+    var answer = 0;
+    let m = Math.floor(n / 10);
+     answer = (n * 12000) + (k * 2000) - m * 2000;
+    return answer;
+}
+
+//정수 n이 주어질 때, n이하의 짝수를 모두 더한 값을 return 하도록 solution 함수를 작성해주세요.
+function solution(n) {
+    var answer = 0;
+    for(let i = 0; i<= n; i+=2){
+        answer += i;
+    }
+    return answer;
+}
+
+//정수 배열 numbers가 매개변수로 주어집니다. numbers의 원소의 평균값을 return하도록 solution 함수를 완성해주세요.
+function solution(numbers) {
+    let answer = 0;
+    let count = numbers.length;
+    let answer2 = 0;
+    numbers.forEach(item => {
+        answer2 += item;
+        answer = answer2 / count;
+    })
+    return answer;
+}
+
+//정수가 들어 있는 배열 num_list가 매개변수로 주어집니다. num_list의 원소의 순서를 거꾸로 뒤집은 배열을 return하도록 solution 함수를 완성해주세요.
+function solution(num_list) {
+    var answer = [];
+    answer = num_list.reverse();
+    return answer;
+}
+
+//문자열 my_string이 매개변수로 주어집니다. my_string을 거꾸로 뒤집은 문자열을 return하도록 solution 함수를 완성해주세요.(약간 서치를 좀 했던 문제)
+function solution(my_string) {
+    var answer = '';
+    answer = my_string.split('').reverse().join('');
+    //문자열+split('') 을 써서 문자열을 각 문자가 요소인 배열로 변환.
+    //.reverse(): 배열의 요소 순서를 역순으로 뒤집기
+    //.join(''): 뒤집힌 배열을 다시 하나의 문자열로 합치기 끝
+    return answer;
+}
+
+//머쓱이는 할머니께 생신 축하 편지를 쓰려고 합니다.
+//할머니가 보시기 편하도록 글자 한 자 한 자를 가로 2cm 크기로 적으려고 하며, 편지를 가로로만 적을 때, 축하 문구 message를 적기 위해 필요한 편지지의 최소 가로길이를 return 하도록 solution 함수를 완성해주세요.
+function solution(message) {
+    var answer = 0;
+    let newAry = message.split('');
+    //배열로 변경 후 배열 아이템 하나에 숫자 2를 부여 그 2를 answer에 더해주면 답이 나오는데 뭔가 더 괜찮은 답이 없을까?
+    //알아보니 문자열로 length가 적용 된다해서 배열로 바꿀 필요가없
+    newAry.forEach(item => {
+        item = 2;
+        answer += item;
+    })
+    return answer;
+}
+//다른 방법1
+function solution(message) {
+    return message.length*2;
+}
+//다른 방법2(구조분해할당)
+function solution(message) {
+    var answer = [...message].length * 2;
+    return answer;
+}
+
+//머쓱이네 피자가게는 피자를 일곱 조각으로 잘라 줍니다. 피자를 나눠먹을 사람의 수 n이 주어질 때, 모든 사람이 피자를 한 조각 이상 먹기 위해 필요한 피자의 수를 return 하는 solution 함수를 완성해보세요.
+function solution(n) {
+    var answer = 0;
+    //n명의 사람이 한조각씩 피자를 먹기 위해서 얼마나 시켜야하냐?
+    //answer에는 시켜야하는 값이 들어가야함 고로 나눴을 때의 몫이 들어가야하고
+    //n명이 몇
+    // 고로 나눴을 때의 나머지가 소수도 아니고 정수형태의 양수여야함
+   answer =  n % 7 === 0 ? Math.floor(n/7) : Math.ceil(n / 7);
+    //15 % 7 === 0이 아님 2하고 1이라는 나머지가 남기에  7로 나눴을 때 나머지가 0이 나오면
+    //알맞게 시킨거니까 그 값을 리턴하고 아니면 나머지가 생기면 값을 올려버리기 
+    return answer;
+}
+//간단하게 쓰면
+const solution = (n) => Math.ceil(n / 7)
+//이렇게도 가능하다
+//또는
+function solution(n) {
+    return Math.ceil(n / 7)
+}
+//이렇게 가능
+
+//어떤 세균은 1시간에 두배만큼 증식한다고 합니다. 처음 세균의 마리수 n과 경과한 시간 t가 매개변수로 주어질 때 t시간 후 세균의 수를 return하도록 solution 함수를 완성해주세요.
+function solution(n, t) {
+    var answer = 0;
+    answer = n * (2 ** t);
+    return answer;
+}
+//이렇게 작성했지만 더 좋은 방법들이 있어서 작성해본다.
+function solution(n, t) {
+  return n << t;
+}
+//시프트 연산자를 활용한 방법
+function solution(n, t) {
+
+    return n*Math.pow(2,t);
+}
+//Math.pow를 활용한 방법
