@@ -221,3 +221,36 @@ function solution(array, height) {
     }) 
     return answer;
 }
+
+//선분 세 개로 삼각형을 만들기 위해서는 다음과 같은 조건을 만족해야 합니다.
+// 가장 긴 변의 길이는 다른 두 변의 길이의 합보다 작아야 합니다.
+// 삼각형의 세 변의 길이가 담긴 배열 sides이 매개변수로 주어집니다. 세 변으로 삼각형을 만들 수 있다면 1, 만들 수 없다면 2를 return하도록 solution 함수를 완성해주세요.
+function solution(sides) {
+    var answer = 0;
+    sides.sort((a,b) => b-a);
+    const first = sides[0];
+    const second = sides[1];
+    const third = sides[2];
+    
+    if(second + third <= first){
+        answer = 2
+    }
+    else{
+        answer = 1
+    }
+    
+    return answer;
+}
+//다른 사람이 짠 간단한 코드
+function solution(sides) {
+    sides = sides.sort((a,b) => a-b)
+    return sides[0]+sides[1] > sides[2] ? 1 : 2;
+}
+//또 다른 사람이 짠 구조분해할당 코드
+function solution(sides) {
+    const [long, a, b] = sides.sort((a,b) => b-a);
+    return long < a + b ? 1 : 2
+}
+
+//머쓱이는 태어난 지 6개월 된 조카를 돌보고 있습니다. 조카는 아직 "aya", "ye", "woo", "ma" 네 가지 발음을 최대 한 번씩 사용해 조합한(이어 붙인) 발음밖에 하지 못합니다.
+//문자열 배열 babbling이 매개변수로 주어질 때, 머쓱이의 조카가 발음할 수 있는 단어의 개수를 return하도록 solution 함수를 완성해주세요.
