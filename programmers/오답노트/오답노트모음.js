@@ -88,4 +88,17 @@ function solution(babbling) {
      return 배열마지막;
 }
   //이렇게 작성해서 등차수열에 들어가는 값이 -1이 되어버림 오류 발생!
-  
+
+
+//연속된 세 개의 정수를 더해 12가 되는 경우는 3, 4, 5입니다. 두 정수 num과 total이 주어집니다. 연속된 수 num개를 더한 값이 total이 될 때, 정수 배열을 오름차순으로 담아 return하도록 solution함수를 완성해보세요
+function solution(num, total) {
+    // 등차수열 합 공식을 이용해 첫 번째 항의 값(start)을 구합니다.
+    // start = total / num - (num - 1) / 2
+    const start = Math.ceil(total / num - num / 2);
+    let answer = [];
+    for (let i = 0; i < num; i++) {
+        answer.push(start + i);
+    }
+    return answer;
+}
+
