@@ -257,3 +257,71 @@ function solution(sides) {
 function solution(M, N) {
     return M * N - 1;
 }
+
+//순서쌍이란 두 개의 숫자를 순서를 정하여 짝지어 나타낸 쌍으로 (a, b)로 표기합니다. 자연수 n이 매개변수로 주어질 때 두 숫자의 곱이 n인 자연수 순서쌍의 개수를 return하도록 solution 함수를 완성해주세요.
+function solution(n) {
+    var answer = 0;
+    for(let i = 0; i <= n; i++){
+        if(n % i === 0){
+            answer++;
+        }
+    }
+    return answer;
+}
+//n의 값은 주어지니까 i의 값을 0부터 n의 값까지 돌아가면서 나눴을 때 나머지가 0이 나오면 약수 그러면 1을 더해준다.
+
+//정수 n과 정수 배열 numlist가 매개변수로 주어질 때, numlist에서 n의 배수가 아닌 수들을 제거한 배열을 return하도록 solution 함수를 완성해주세요.
+function solution(n, numlist) {
+    var answer = [];
+    numlist.forEach(item =>{
+        item % n == 0 ? answer.push(item) : item 
+    })
+    return answer;
+}
+
+//문자열 배열 strlist가 매개변수로 주어집니다. strlist 각 원소의 길이를 담은 배열을 return하도록 solution 함수를 완성해주세요.
+function solution(strlist) {
+    var answer = [];
+    strlist.forEach(item =>{
+        answer.push(item.split("").length)
+    })
+    
+    return answer;
+}
+//map을 쓰면 진짜로 편함
+function solution(strlist) {
+    return strlist.map((el) => el.length)
+}
+
+//머쓱이는 추운 날에도 아이스 아메리카노만 마십니다.
+//아이스 아메리카노는 한잔에 5,500원입니다. 머쓱이가 가지고 있는 돈 money가 매개변수로 주어질 때, 머쓱이가 최대로 마실 수 있는 아메리카노의 잔 수와 남는 돈을 순서대로 담은 배열을 return 하도록 solution 함수를 완성해보세요.
+function solution(money) {
+    let coffee = 5500;
+    var answer = [];
+    answer.push(Math.floor(money / coffee))
+    answer.push(money % coffee)
+    return answer;
+}
+
+//문자열 str1, str2가 매개변수로 주어집니다. str1 안에 str2가 있다면 1을 없다면 2를 return하도록 solution 함수를 완성해주세요.
+function solution(str1, str2) {
+    return str1.includes(str2) ? 1 : 2
+}
+
+//문자열 my_string과 정수 n이 매개변수로 주어질 때, my_string에 들어있는 각 문자를 n만큼 반복한 문자열을 return 하도록 solution 함수를 완성해보세요.
+function solution(my_string, n) {
+    var answer = '';
+    let newarr = my_string.split('');
+    for(let i = 0; i < newarr.length; i++){
+        for(let j =0; j<n; j++){
+           answer += newarr[i] 
+        }
+    }
+  return answer
+}
+//진짜 희귀버전
+function solution(my_string, n) {
+    var answer = [...my_string].map(v => v.repeat(n)).join("");
+    console.log(answer);
+    return answer;
+}
