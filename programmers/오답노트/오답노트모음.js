@@ -102,3 +102,76 @@ function solution(num, total) {
     return answer;
 }
 
+
+//문자열 "hello"에서 각 문자를 오른쪽으로 한 칸씩 밀고 마지막 문자는 맨 앞으로 이동시키면 "ohell"이 됩니다.
+//이것을 문자열을 민다고 정의한다면 문자열 A와 B가 매개변수로 주어질 때, A를 밀어서 B가 될 수 있다면 밀어야 하는 최소 횟수를 return하고 밀어서 B가 될 수 없으면 -1을 return 하도록 solution 함수를 완성해보세요.
+
+function solution(A, B) {
+    if (A === B) return 0; // 시작부터 같으면 0번 이동
+
+    let tempArr = A.split(''); // 문자열을 배열로 변환
+    for (let i = 0; i < A.length; i++) {
+        let lastChar = tempArr.pop(); // 마지막 문자를 추출
+        tempArr.unshift(lastChar); // 맨 앞에 추가
+        if (tempArr.join('') === B) { // 변경된 문자열이 B와 같은지 확인
+            return i + 1; // 이동 횟수 반환
+        }
+    }
+    return -1; // B와 일치하는 문자열이 없을 경우 -1 반환
+}
+
+//정수 배열 numbers와 정수 num1, num2가 매개변수로 주어질 때, numbers의 num1번 째 인덱스부터 num2번째 인덱스까지 자른 정수 배열을 return 하도록 solution 함수를 완성해보세요.
+function solution(numbers, num1, num2) {
+    var answer = [];
+    answer = numbers.slice(num1, num2+1)
+    return answer;
+}
+
+
+//사분면은 한 평면을 x축과 y축을 기준으로 나눈 네 부분입니다. 사분면은 아래와 같이 1부터 4까지 번호를매깁니다.
+// x 좌표와 y 좌표가 모두 양수이면 제1사분면에 속합니다.
+// x 좌표가 음수, y 좌표가 양수이면 제2사분면에 속합니다.
+// x 좌표와 y 좌표가 모두 음수이면 제3사분면에 속합니다.
+// x 좌표가 양수, y 좌표가 음수이면 제4사분면에 속합니다.
+// x 좌표 (x, y)를 차례대로 담은 정수 배열 dot이 매개변수로 주어집니다. 좌표 dot이 사분면 중 어디에 속하는지 1, 2, 3, 4 중 하나를 return 하도록 solution 함수를 완성해주세요.
+
+//나의 무식한 방식
+function solution(dot) {
+    if( dot[0] > 0 && dot[1] > 0){
+        return 1;
+    }
+ if(dot[0] < 0 && dot[1] > 0){
+        return 2;
+    }
+  if(dot[0] < 0 && dot[1] < 0){
+        return 3;
+    }
+  if(dot[0] > 0 && dot[1] < 0){
+        return 4;
+    }
+  
+}
+
+//다른 사람 풀이 구조분해할당
+function solution(dot) {
+    const [num,num2] = dot;
+    const check = num * num2 > 0;
+    return num > 0 ? (check ? 1 : 4) : (check ? 3 : 2);
+}
+
+
+//삼항연산자 깔끔하게
+function solution(dot) {
+    return dot[0] > 0 ? dot[1] > 0 ? 1 : 4 : dot[1] > 0 ? 2 : 3;
+}
+
+//두 배열이 얼마나 유사한지 확인해보려고 합니다. 문자열 배열 s1과 s2가 주어질 때 같은 원소의 개수를 return하도록 solution 함수를 완성해주세요.
+function solution(s1, s2) {
+    var answer = 0;
+    for(let i = 0; i < s1.length; i++){
+        for(let j = 0; j < s2.length; j++){
+            s1[i] == s2[j] ? answer += 1 : answer
+        }
+    }
+ return answer;
+}
