@@ -175,3 +175,26 @@ function solution(s1, s2) {
     }
  return answer;
 }
+
+// 어떤 자연수를 제곱했을 때 나오는 정수를 제곱수라고 합니다. 정수 n이 매개변수로 주어질 때, n이 제곱수라면 1을 아니라면 2를 return하도록 solution 함수를 완성해주세요.
+function solution(n) {
+    let answer = Math.sqrt(n); // 입력받은 숫자의 제곱근을 Math.sqrt() 함수를 이용해 구합니다. 
+    return Number.isInteger(answer) ? 1 : 2 //Number.isInteger() 함수를 사용해 true가 나오면 제곱수입니다.
+}
+
+//문자열 my_string과 문자 letter이 매개변수로 주어집니다. my_string에서 letter를 제거한 문자열을 return하도록 solution 함수를 완성해주세요.
+function solution(my_string, letter) {
+    for(let i = 0; i < my_string.length; i++){
+    if (my_string.includes(letter)) {
+        let newText = my_string.replace(letter, ""); 
+        }
+        return newText
+    }
+}
+//오류가 너무 많았음 let을 if문 안에서 선언해놓고 그거를 for문에서 쓰면 인식을 못함
+//두번째로 if문 안에서 사용하면 다행히 삭제는 해주지만 중복된 글자를 제거 못해줌 예를 들어서 aaabbb가 있고 제거할게 b라면 aaabb 이렇게만 남게됨
+//그래서 사용해야하는 방법이 
+function solution(my_string, letter) {
+  return my_string.split(letter).join("");
+}
+//split과 join을 이용한 방법임
