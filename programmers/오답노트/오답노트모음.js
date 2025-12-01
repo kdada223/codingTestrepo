@@ -210,3 +210,137 @@ function solution(num_list) {
 //출력시 [2, 3], [0, 4] 이런식으로 출력되야하는데
 //배열까지는 만들었지만 [3], [4] 이런식으로 홀 짝 구분없이 하나로 묶여있었음
 //그거를 차라리 리턴할 때 배열안에 그냥 변수를 담으면 됨 
+
+
+//중앙값은 어떤 주어진 값들을 크기의 순서대로 정렬했을 때 가장 중앙에 위치하는 값을 의미합니다. 예를 들어 1, 2, 7, 10, 11의 중앙값은 7입니다.
+//정수 배열 array가 매개변수로 주어질 때, 중앙값을 return 하도록 solution 함수를 완성해보세요.
+function solution(array) {
+    var answer = 0;
+   answer = array.sort((a,b)=> a - b)
+    let length = answer.length;
+    if(length % 2 === 1){
+        return answer[Math.floor(length / 2)];
+    }
+   
+}
+//자 내가 헷갈린 점 저기 return문을 보면 mathfloor로 배열의 길이에서 반을 나누고 소수점을 버리면 중앙값이 아니라 중앙값의 전의 값이 나오는게 아닌가라는 생각을했지만?
+//배열의 인덱싱은 0부터 시작하기 때문에 소수점을 버린 값이 중앙값이 맞다 이런 실수는 드릅게 멍청한 실수였다.
+
+
+//정수 n이 매개변수로 주어질 때, n 이하의 홀수가 오름차순으로 담긴 배열을 return하도록 solution 함수를 완성해주세요.
+function solution(n) {
+    var answer = [];
+    for(let i = 0; i <= n; i++){
+        if(i % 2 !== 0){
+           answer.push(i);
+        }
+    }
+    return answer;
+}
+//n이라는 자연수가 주어지기 때문에 그 자연수보다 낮은 수를 출력하는 for문을 만들면 되는거였음
+//n이 배열이였으면 다르게 생각해야겠지만 n이 어쨋든 자연수이기 때문에 그 자연수 값보다 낮으면 다 돌려보면서 그 값을 푸시하면 됨
+//또 다른 방법으로는
+function solution(n) {
+    let answer = [];
+    for (let i = 1; i<=n; i+=2) answer.push(i)
+    return answer;
+}
+//이렇게 작성하면 되는데 if문으로 1,2,3,4,5,6,7,8 다 검사하는게 아니라 그냥 1부터 시작해서 2씩 더해 홀수 값만 출력하는 방식이다.
+
+
+//머쓱이네 옷가게는 10만 원 이상 사면 5%, 30만 원 이상 사면 10%, 50만 원 이상 사면 20%를 할인해줍니다.
+//구매한 옷의 가격 price가 주어질 때, 지불해야 할 금액을 return 하도록 solution 함수를 완성해보세요.
+function solution(price) {
+    var answer = 0;
+    if(price >= 500000){
+       return answer = Math.floor(price - (price *0.2))
+    }
+    else if(price >= 300000){
+       return answer = Math.floor(price - (price *0.1))
+    }
+    else if(price >= 100000){
+       return answer = Math.floor(price - (price *0.05))
+    }
+    else{
+        return price
+    }
+}
+//잘풀었다 하지만 실수 몇가지가 있는데 일단 10만원보다 적은 10만원 미만일 때의 리턴을 마련해두지 않았었고
+//이상사면 이라는 말이 문제에 있는데 그럴 경우 딱 10만원만 샀을 경우 30만원만 샀을 경우 이런 것도 염두를 하고 크거나 같으면 이라는 등호 >= 를 써야한다.
+
+//"*"의 높이와 너비를 1이라고 했을 때, "*"을 이용해 직각 이등변 삼각형을 그리려고합니다. 정수 n 이 주어지면 높이와 너비가 n 인 직각 이등변 삼각형을 출력하도록 코드를 작성해보세요.
+//이거는 처음보는 코드들이 정말 많았음. on이라던지, link 파라미터라던지 
+// 1. readline 모듈을 불러옴 (Node.js에서 표준입력/출력을 쉽게 다룸)
+const readline = require('readline');
+
+// 2. readline 인터페이스 생성 (입력방식: 표준입력, 출력방식: 표준출력)
+// 이 인터페이스는 아래에서 입력이 올 때마다 처리해줌
+const rl = readline.createInterface({
+    input: process.stdin,      // 입력은 키보드(터미널)에서 받겠다
+    output: process.stdout     // 출력은 터미널에 쓰겠다 (필수는 아님)
+});
+
+// 3. 사용자 입력값을 담을 변수(빈 배열) 선언
+let input = [];
+
+// 4. rl.on('line', ...) : 사용자가 엔터 칠 때마다 실행
+//      - line 이벤트: 사용자가 한 줄 입력하고 엔터를 칠 때 호출됨
+//      - line이라는 파라미터에는 '사용자가 입력한 한 줄 전체 문자열'이 들어감
+rl.on('line', function (line) {
+    // line.split(' ') : 입력 문자열을 띄어쓰기를 기준으로 '쪼개서 배열화'
+    // 즉  "10 20 50" 이 입력됐다면  ['10','20','50']처럼 변환됨
+    input = line.split(' ');   // input에 위 배열을 저장
+    // 이 코드는 한 줄만 입력 받는 구조. 여러 줄을 받아야 한다면 push를 써야 함(설명 하단 참고)
+})
+
+// 5. rl.on('close', ...) : 입력이 모두 끝나고(EOF, Ctrl+D) 나서 한 번만 실행
+//      - close 이벤트: 입력 스트림이 닫힐 때(더 이상 입력이 없을 때) 호출됨
+//      - 보통 입력값 모두 받았으니 이제 문제 풀이 or 결과 출력!
+.on('close', function () {
+    // input[0] : 띄어쓰기로 쪼갠 배열의 첫 번째(0번째) 원소(예: '10')
+    // Number(...) : 문자열을 숫자로 변환
+    // console.log(...) : 결과를 터미널에 출력
+    for(let i = 1; i <= Number(input[0]); i++)
+    console.log('*'.repeat(i));
+    //repeat 함수 문자열을 지정된 횟수만큼 반복
+    //문자.repeat(횟수) 이렇게 작성
+//그래서 주석을 달아서 설명해놓겠음.
+
+
+//또 등신짓을 함 이거는 실수가 아니라 실력임 정진하도록
+//개미 군단이 사냥을 나가려고 합니다. 개미군단은 사냥감의 체력에 딱 맞는 병력을 데리고 나가려고 합니다. 장군개미는 5의 공격력을, 병정개미는 3의 공격력을 일개미는 1의 공격력을 가지고 있습니다.
+//예를 들어 체력 23의 여치를 사냥하려고 할 때, 일개미 23마리를 데리고 가도 되지만, 장군개미 네 마리와 병정개미 한 마리를 데리고 간다면 더 적은 병력으로 사냥할 수 있습니다.
+//사냥감의 체력 hp가 매개변수로 주어질 때, 사냥감의 체력에 딱 맞게 최소한의 병력을 구성하려면 몇 마리의 개미가 필요한지를 return하도록 solution 함수를 완성해주세요.
+function solution(hp) {
+     let answer = 0;
+    answer += Math.floor(hp / 5);           // 5로 최대로 나누고
+    hp = hp % 5;                            // 남은 hp
+    answer += Math.floor(hp / 3);           // 3으로 최대로 나누고
+    hp = hp % 3;                            // 남은 hp
+    answer += Math.floor(hp / 1);           // 1로 나눔(그대로 개수)
+    return answer;
+}
+//이건 정답코드 내가 한 실수코드를 보자면
+function solution(hp) {
+    var answer = 0;
+    let 나머지 = 0
+    let 두번째나머지 = 0
+    let 세번째나머지 = 0
+    let 마지막나머지 = 0
+    if(hp / 5 > 1){
+        answer = Math.floor(hp / 5)
+        나머지 = Math.floor(hp % 5)
+        // return answer
+    }
+    else if(hp / 3 > 1){
+        두번째나머지 = Math.floor(나머지 / 3)
+        세번째나머지 = Math.floor(나머지 % 3)
+    }
+    else {
+        마지막나머지 = Math.floor(세번째나머지 / 1)
+    }
+    return answer + 두번째나머지 + 마지막나머지;
+}
+//진짜 쓸 곳없는 if문을 생성함 그냥 나머지가 필요한거면 나머지만 뽑으면 나눈 값이 필요한거면 그걸 바로바로 더하면 되는디 멍청했음
+//변수로 관리하려다가 오히려 더 불편해진 상태임
+    
