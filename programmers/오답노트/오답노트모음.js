@@ -391,3 +391,19 @@ function solution(cipher, code) {
 //그러면 어떻게 해야할까?
 //for문을 생성할 때에 let i = code - 1로 작성하면 쉽게 해결이 된다.
 //0부터 시작하는게 아닌 code의 숫자의 인덱스 번호를 인식하기 위해 -1를 해서 거기부터 시작해 code값만큼 for문으로 돌리며 더하면 깔끔히 해결된다.
+
+
+
+//문자열 my_string이 매개변수로 주어질 때, 대문자는 소문자로 소문자는 대문자로 변환한 문자열을 return하도록 solution 함수를 완성해주세요.
+function solution(my_string) {
+    var answer = '';
+    answer = my_string.split('').map(x => {
+        if(x === x.toUpperCase()){
+            return x.toLowerCase()
+        }
+        else{
+            return x.toUpperCase()
+        }
+    }).join('')
+    return answer;
+}
