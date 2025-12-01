@@ -198,3 +198,15 @@ function solution(my_string, letter) {
   return my_string.split(letter).join("");
 }
 //split과 join을 이용한 방법임
+
+//정수가 담긴 리스트 num_list가 주어질 때, num_list의 원소 중 짝수와 홀수의 개수를 담은 배열을 return 하도록 solution 함수를 완성해보세요
+function solution(num_list) {
+    const evenCnt = num_list.filter(num => num % 2 === 0).length;
+    const oddCnt = num_list.length - evenCnt;
+
+    return [evenCnt, oddCnt];
+}
+//내가 그전에 작성한건 날아가서 따로 문제점을 작성해보겠음.
+//출력시 [2, 3], [0, 4] 이런식으로 출력되야하는데
+//배열까지는 만들었지만 [3], [4] 이런식으로 홀 짝 구분없이 하나로 묶여있었음
+//그거를 차라리 리턴할 때 배열안에 그냥 변수를 담으면 됨 
